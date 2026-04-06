@@ -1,0 +1,13 @@
+[
+  {
+    "name": "Theme settings",
+    "settings": [
+      {
+        "type": "text",
+        "id": "site_tagline",
+        "label": "Site tagline",
+        "default": "Welcome to our store"
+      }
+    ]
+  }
+]
