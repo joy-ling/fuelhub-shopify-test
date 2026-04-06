@@ -1,0 +1,40 @@
+<style>
+    .header {
+        padding: 1rem 0;
+    }
+
+    .header .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+
+<header class="header" style="background-color: {{ section.settings.background_color | default: '#000000' }}">
+    <div class="container">
+        <div class="header__logo">
+            {{ settings.background_color }}
+            {% if settings.logo %}
+                <a href="{{ routes.root_url }}">
+                    <img src="{{ settings.logo | image_url: width: 200 }}" alt="{{ shop.name }}">
+                </a>
+            {% else %}
+                <a href="{{ routes.root_url }}">
+                    {{ shop.name }}
+                </a>
+            {% endif %}
+        </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background Color"
+    }
+  ]
+}
+{% endschema %}

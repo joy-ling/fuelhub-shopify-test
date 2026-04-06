@@ -7,6 +7,11 @@
         "id": "site_tagline",
         "label": "Site tagline",
         "default": "Welcome to our store"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo image"
       }
     ]
   }
