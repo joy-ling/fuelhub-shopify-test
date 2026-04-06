@@ -1,9 +1,40 @@
+:root {
+    --green: #77F351;
+    --breakpoint-desktop: 1280px;
+    --breakpoint-tablet: 768px;
+    --breakpoint-mobile: 470px;
+}
+
 body {
     margin: 0;
+    font-family: 'Roboto', sans-serif;
 }
 
 .container {
     width: 100%;
     max-width: 1280px;
     margin: 0 auto;
+}
+
+.btn {
+    text-decoration: none;
+    width: max-content;
+    padding: 1rem 2rem;
+    border-radius: 2rem;
+}
+
+.btn--white {
+    color: white;
+    border: 1px solid white;
+}
+
+.btn--green {
+    background-color: var(--green);
+    color: black;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.btn--green:hover {
+    filter: brightness(0.75);
 }

@@ -3,9 +3,12 @@
     "header": {
       "type": "header"
     },
+    "hero": {
+      "type": "hero"
+    },
     "main": {
       "type": "main-page"
     }
   },
-  "order": ["header","main"]
+  "order": ["header","hero","main"]
 }
