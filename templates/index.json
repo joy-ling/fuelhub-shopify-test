@@ -23,7 +23,7 @@
         "heading": "Premium Meal Prep",
         "subheading": "Chef-prepared, nutritionist-designed high-protein meals delivered weekly and ready in 3 minutes.",
         "button_text": "Order Now",
-        "button_url": "shopify://collections",
+        "button_url": "#main",
         "background_image": "shopify://shop_images/FAQ_Hero_Image_Packaging_1024x1024_png.webp"
       }
     },
