@@ -73,8 +73,14 @@ cartToggle.addEventListener('click', toggleCart);
 cartClose.addEventListener('click', toggleCart);
 cartOverlay.addEventListener('click', toggleCart);
 
-// Add to cart
+// Add to cart and toggle cart from bottom message
 document.addEventListener('click', function(e) {
+    if (e.target.closest('.click-to-view-cart')) {
+    e.preventDefault();
+    toggleCart();
+    return;
+    }
+
     if (e.target.classList.contains('add-to-cart')) {
     e.preventDefault();
     const variantId = e.target.getAttribute('data-variant-id');
@@ -382,7 +388,7 @@ function showDiscountMessage() {
 
 // Update bottom quantity message
 function updateBottomQuantityMessage() {
-    bottomQuantityMessage.textContent = `You have selected ${totalMeals} meals`;
+    bottomQuantityMessage.innerHTML = `<p>You have selected ${totalMeals} meals</p><p class='click-to-view-cart' id='click-to-view-cart'>Click to view cart</p>`;
 }
 
 // Close discount message
