@@ -20,6 +20,27 @@
     width: 100%;
     text-align:center;
   }
+
+  .product-grid {
+    margin-top: 3rem;
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 1fr;
+  }
+
+  /* Tablet */
+  @media (min-width: 640px) {
+    .product-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* Desktop */
+  @media (min-width: 1024px) {
+    .product-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
 </style>
 
 <section class="main">
@@ -85,30 +106,3 @@
   ]
 }
 {% endschema %}
-
-<script>
-document.querySelectorAll('.select-product').forEach(button => {
-
-  button.addEventListener('click', async () => {
-
-    const variantId = button.dataset.variantId;
-
-    await fetch('/cart/add.js', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        items: [{
-          id: variantId,
-          quantity: 1
-        }]
-      })
-    });
-
-    document.dispatchEvent(new CustomEvent('cart:open'));
-
-  });
-
-});
-</script>

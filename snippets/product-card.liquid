@@ -1,11 +1,4 @@
 <style>
-  .product-grid {
-    margin-top:3rem;
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-    gap:2rem;
-  }
-
   .product-card {
     text-align: center;
   }
@@ -54,6 +47,13 @@
     font-size: 0.75rem;
   }
 
+  .product-card__actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
   .product-tags {
     position: absolute;
     display: flex;
@@ -91,9 +91,41 @@
   .select-product:hover {
     filter: brightness(0.75);
   }
+
+  .quantity-input-card {
+    width: 60px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 0.5rem;
+    margin-right: 0.5rem;
+  }
+
+  .add-to-cart {
+    background: var(--green);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .add-to-cart:hover {
+    filter: brightness(0.9);
+  }
+
+  .product-added-message {
+    display: none;
+    color: var(--green);
+    font-weight: bold;
+    text-align: center;
+    margin-top: 0.5rem;
+ }
+</style>
 </style>
 
-<div class="product-card">
+<div class="product-card" data-variant-id="{{ product.first_available_variant.id }}">
 
   <figure class="product-card__image">
     <img
@@ -136,15 +168,27 @@
     </p>
   {% endif %}
 
+    {% if product.metafields.shopify.allergen-information %}
+    <p class="product-card__allergens">
+        <strong>Allergens:</strong>
+        {% for allergen in product.metafields.shopify.allergen-information.value %}
+        {{ allergen.label.value }}{% unless forloop.last %}, {% endunless %}
+        {% endfor %}
+    </p>
+    {% endif %}
+
+
   <p class="product-card__price">
     {{ product.price | money }}
   </p>
 
-  <button
-    class="select-product"
-    data-variant-id="{{ product.first_available_variant.id }}"
-  >
-    Select
-  </button>
+  <div class="product-card__actions">
+    <input type="number" class="quantity-input-card" data-variant-id="{{ product.first_available_variant.id }}" value="1" min="1" max="10">
+    <button class="add-to-cart" data-variant-id="{{ product.first_available_variant.id }}">Add</button>
+  </div>
+
+  <div class="product-added-message">
+    Product added to cart
+  </div>
 
 </div>
