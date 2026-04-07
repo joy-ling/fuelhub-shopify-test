@@ -177,15 +177,14 @@
         </p>
     {% endif %}
 
-        {% if product.metafields.shopify.allergen-information %}
-        <p class="product-card__allergens">
-            <strong>Allergens:</strong>
-            {% for allergen in product.metafields.shopify.allergen-information.value %}
-            {{ allergen.label.value }}{% unless forloop.last %}, {% endunless %}
-            {% endfor %}
-        </p>
-        {% endif %}
-
+    <p class="product-card__allergens {% unless product.metafields.shopify.allergen-information %}invisible{% endunless %}">
+    <strong>Allergens:</strong>
+    {% if product.metafields.shopify.allergen-information %}
+        {% for allergen in product.metafields.shopify.allergen-information.value %}
+        {{ allergen.label.value }}{% unless forloop.last %}, {% endunless %}
+        {% endfor %}
+    {% endif %}
+    </p>
 
     <p class="product-card__price">
         {{ product.price | money }}

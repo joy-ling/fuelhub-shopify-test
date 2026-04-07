@@ -40,3 +40,7 @@ body {
 .btn--green:hover {
     filter: brightness(0.75);
 }
+
+.invisible {
+    visibility: hidden;
+}
