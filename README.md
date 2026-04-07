@@ -2,6 +2,9 @@
 
 A custom Shopify theme for FuelHub, a meal delivery service with dynamic cart management, tiered discounting, and intelligent meal quantity tracking.
 
+## Preview Link
+https://fuelhub-test-2.myshopify.com/
+
 ## Features
 
 ### Dynamic Shopping Cart
