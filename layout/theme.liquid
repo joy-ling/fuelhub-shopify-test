@@ -11,5 +11,6 @@
     <body>
         {{ content_for_layout }}
         {% render 'cart' %}
+        {{ 'global.js' | asset_url | script_tag }}
     </body>
 </html>

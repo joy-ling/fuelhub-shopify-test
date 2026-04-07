@@ -1,6 +1,8 @@
 <style>
   .product-card {
     text-align: center;
+    border: 1px solid var(--dark-grey);
+    border-radius: 1rem;
   }
 
   .product-card__image {
@@ -8,10 +10,13 @@
     height: 300px;
     position: relative;
     overflow: hidden;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
     margin: 0;
   }
 
   .product-card__image img {
+    overflow: hidden;
     position: absolute;
     width: 100%;
     height: 100%;
@@ -25,6 +30,10 @@
   .product-card__image img:hover {
     transform: scale(1.25);
     transition: transform 0.5s ease;
+  }
+
+  .product-card__content {
+    padding: 1rem;
   }
 
   .product-card__price {
@@ -123,7 +132,6 @@
     margin-top: 0.5rem;
  }
 </style>
-</style>
 
 <div class="product-card" data-variant-id="{{ product.first_available_variant.id }}">
 
@@ -142,53 +150,54 @@
     {% endif %}
   </figure>
 
-  <h3 class="product-card__header">
-    {{ product.title }}
-  </h3>
+  <div class="product-card__content">
+    <h3 class="product-card__header">
+        {{ product.title }}
+    </h3>
 
-  {% if product.metafields.custom.subtitle %}
-    <p class="product-card__subtitle">
-      {{ product.metafields.custom.subtitle }}
-    </p>
-  {% endif %}
-
-  {% if product.metafields.custom.calories or product.metafields.custom.protein %}
-    <p class="product-card__info">
-      {% if product.metafields.custom.calories %}
-        {{ product.metafields.custom.calories }} kcal
-      {% endif %}
-
-      {% if product.metafields.custom.calories and product.metafields.custom.protein %}
-        |
-      {% endif %}
-
-      {% if product.metafields.custom.protein %}
-        {{ product.metafields.custom.protein }} g protein
-      {% endif %}
-    </p>
-  {% endif %}
-
-    {% if product.metafields.shopify.allergen-information %}
-    <p class="product-card__allergens">
-        <strong>Allergens:</strong>
-        {% for allergen in product.metafields.shopify.allergen-information.value %}
-        {{ allergen.label.value }}{% unless forloop.last %}, {% endunless %}
-        {% endfor %}
-    </p>
+    {% if product.metafields.custom.subtitle %}
+        <p class="product-card__subtitle">
+        {{ product.metafields.custom.subtitle }}
+        </p>
     {% endif %}
 
+    {% if product.metafields.custom.calories or product.metafields.custom.protein %}
+        <p class="product-card__info">
+        {% if product.metafields.custom.calories %}
+            {{ product.metafields.custom.calories }} kcal
+        {% endif %}
 
-  <p class="product-card__price">
-    {{ product.price | money }}
-  </p>
+        {% if product.metafields.custom.calories and product.metafields.custom.protein %}
+            |
+        {% endif %}
 
-  <div class="product-card__actions">
-    <input type="number" class="quantity-input-card" data-variant-id="{{ product.first_available_variant.id }}" value="1" min="1" max="10">
-    <button class="add-to-cart" data-variant-id="{{ product.first_available_variant.id }}">Add</button>
+        {% if product.metafields.custom.protein %}
+            {{ product.metafields.custom.protein }} g protein
+        {% endif %}
+        </p>
+    {% endif %}
+
+        {% if product.metafields.shopify.allergen-information %}
+        <p class="product-card__allergens">
+            <strong>Allergens:</strong>
+            {% for allergen in product.metafields.shopify.allergen-information.value %}
+            {{ allergen.label.value }}{% unless forloop.last %}, {% endunless %}
+            {% endfor %}
+        </p>
+        {% endif %}
+
+
+    <p class="product-card__price">
+        {{ product.price | money }}
+    </p>
+
+    <div class="product-card__actions">
+        <input type="number" class="quantity-input-card" data-variant-id="{{ product.first_available_variant.id }}" value="1" min="1" max="10">
+        <button class="add-to-cart" data-variant-id="{{ product.first_available_variant.id }}">Add</button>
+    </div>
+
+    <div class="product-added-message">
+        Product added to cart
+    </div>
   </div>
-
-  <div class="product-added-message">
-    Product added to cart
-  </div>
-
 </div>
