@@ -1,17 +1,55 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "header": {
-      "type": "header"
+      "type": "header",
+      "settings": {
+        "background_color": ""
+      }
     },
     "hero": {
-      "type": "hero"
+      "type": "hero",
+      "settings": {
+        "background_color": "",
+        "text_color": "",
+        "heading": "Premium Meal Prep",
+        "subheading": "Chef-prepared, nutritionist-designed high-protein meals delivered weekly and ready in 3 minutes.",
+        "button_text": "Order Now",
+        "button_url": "shopify://collections",
+        "background_image": "shopify://shop_images/FAQ_Hero_Image_Packaging_1024x1024_png.webp"
+      }
     },
     "main": {
-      "type": "main-page"
+      "type": "main-page",
+      "settings": {
+        "background_color": "",
+        "text_color": "",
+        "heading": "Prepare Your Meal Bundle",
+        "subheading": "Select between 5-10 meals and save on discounts",
+        "product_collection": "frontpage"
+      }
     },
     "footer": {
-      "type": "footer"
+      "type": "footer",
+      "settings": {
+        "background_color": "",
+        "text_color": "",
+        "footer_text": "Made by Joy Chiang Ling"
+      }
     }
   },
-  "order": ["header","hero","main","footer"]
+  "order": [
+    "header",
+    "hero",
+    "main",
+    "footer"
+  ]
 }
