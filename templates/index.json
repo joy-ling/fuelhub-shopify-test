@@ -8,7 +8,10 @@
     },
     "main": {
       "type": "main-page"
+    },
+    "footer": {
+      "type": "footer"
     }
   },
-  "order": ["header","hero","main"]
+  "order": ["header","hero","main","footer"]
 }

@@ -1,0 +1,51 @@
+<style>
+    .footer {
+        padding: 1rem 0;
+    }
+
+    .footer .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .footer__content {
+        color: {{ section.settings.text_color | default: '#ffffff' }};
+        text-align: center;
+    }
+</style>
+
+<footer class="footer" style="background-color: {{ section.settings.background_color | default: '#000000' }}">
+    <div class="container">
+        <div class="footer__content">
+            {% if section.settings.footer_text %}
+                <p>
+                    {{ section.settings.footer_text }}
+                </p>
+            {% endif %}
+        </div>
+    </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background Color"
+    },
+    {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text Color"
+    },
+    {
+        "type": "text",
+        "id": "footer_text",
+        "label": "Footer Text",
+    }
+  ]
+}
+{% endschema %}

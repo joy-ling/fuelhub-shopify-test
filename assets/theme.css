@@ -1,5 +1,6 @@
 :root {
     --green: #77F351;
+    --grey: #F5F5F5;
     --breakpoint-desktop: 1280px;
     --breakpoint-tablet: 768px;
     --breakpoint-mobile: 470px;

@@ -1,6 +1,7 @@
-{% stylesheet %}
+<style>
     .header {
         padding: 1rem 0;
+        background-color: {{ section.settings.background_color | default: '#000000' }}
     }
 
     .header .container {
@@ -8,9 +9,9 @@
         justify-content: center;
         align-items: center;
     }
-{% endstylesheet %}
+</style>
 
-<header class="header" style="background-color: {{ section.settings.background_color | default: '#000000' }}">
+<header class="header">
     <div class="container">
         <div class="header__logo">
             {{ settings.background_color }}

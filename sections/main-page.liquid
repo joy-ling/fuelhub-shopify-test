@@ -1,12 +1,206 @@
+<style>
+  .main {
+    border-top: 15px solid var(--green);
+    padding: 4rem 0;
+    background-color: {{ section.settings.background_color | default: '#000000' }};
+  }
+
+  .main__content {
+    color: {{ section.settings.text_color | default: '#ffffff' }};
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: center;
+    width: 100%;
+  }
+
+  .main__text {
+    width: 100%;
+    text-align:center;
+  }
+
+  .product-grid {
+    margin-top:3rem;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:2rem;
+  }
+
+  .product-card {
+    text-align:center;
+  }
+
+  .product-card__image {
+    width:100%;
+    height:auto;
+  }
+
+  .product-card__price {
+    font-weight:bold;
+    margin: 0.5rem 0;
+  }
+
+  .product-card__header {
+    margin: 1rem 0 0 0;
+    text-transform: uppercase;
+  }
+
+  .product-card__subtitle {
+    margin: 0 0 0.5rem 0;
+    color: var(--grey);
+    font-size: 0.9rem;
+  }
+
+  .product-card__info {
+    font-size: 0.75rem;
+  }
+
+  .select-product {
+    background:var(--green);
+    border-radius: 1rem;
+    padding: 0.75rem 2rem;
+    cursor: pointer;
+    border: none;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .select-product:hover {
+    filter: brightness(0.75);
+  }
+</style>
+
 <section class="main">
   <div class="container">
-    <h1>Hello world</h1>
+    <div class="main__content">
+      <div class="main__text">
+        {% if section.settings.heading %}
+            <h1>
+                {{ section.settings.heading }}
+            </h1>
+        {% endif %}
+        {% if section.settings.subheading %}
+            <p>
+                {{ section.settings.subheading }}
+            </p>
+        {% endif %}
+
+        {% assign collection = collections[section.settings.product_collection] %}
+
+        {% if collection.products.size > 0 %}
+        <div class="product-grid">
+
+          {% for product in collection.products %}
+          <div class="product-card">
+
+            <img
+              src="{{ product.featured_image | image_url: width: 600 }}"
+              alt="{{ product.title }}"
+              class="product-card__image"
+            >
+
+            <h3 class="product-card__header">
+              {{ product.title }}
+            </h3>
+
+            {% if product.metafields.custom.subtitle %}
+              <p class="product-card__subtitle">
+                {{ product.metafields.custom.subtitle }}
+              </p>
+            {% endif %}
+
+            {% if product.metafields.custom.calories or product.metafields.custom.protein %}
+              <p class="product-card__info">
+                {% if product.metafields.custom.calories %}
+                  {{ product.metafields.custom.calories }} kcal
+                {% endif %}
+                {% if product.metafields.custom.calories and product.metafields.custom.protein %}
+                  |
+                {% endif %}
+                {% if product.metafields.custom.protein %}
+                  {{ product.metafields.custom.protein }} g protein
+                {% endif %}
+              </p>
+            {% endif %}
+
+            <p class="product-card__price">
+              {{ product.price | money }}
+            </p>
+
+            <button
+              class="select-product"
+              data-variant-id="{{ product.first_available_variant.id }}"
+            >
+              Select
+            </button>
+
+          </div>
+          {% endfor %}
+
+        </div>
+        {% endif %}
+      </div>
+    </div>
   </div>
 </section>
 
 {% schema %}
 {
   "name": "Main Page",
-  "settings": []
+  "settings": [
+    {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background Color"
+    },
+    {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text Color"
+    },
+    {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+    },
+    {
+        "type": "textarea",
+        "id": "subheading",
+        "label": "Subheading",
+    },
+    {
+      "type": "collection",
+      "id": "product_collection",
+      "label": "Product Collection"
+    }
+  ]
 }
 {% endschema %}
+
+<script>
+document.querySelectorAll('.select-product').forEach(button => {
+
+  button.addEventListener('click', async () => {
+
+    const variantId = button.dataset.variantId;
+
+    await fetch('/cart/add.js', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        items: [{
+          id: variantId,
+          quantity: 1
+        }]
+      })
+    });
+
+    document.dispatchEvent(new CustomEvent('cart:open'));
+
+  });
+
+});
+</script>
