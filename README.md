@@ -61,12 +61,11 @@ fuelhub-shopify-test/
 ├── sections/
 │   ├── header.liquid            # Header with background color settings
 │   ├── main-page.liquid         # Main product page
-│   └── hero.liquid              # Hero section with gradient
+│   └── hero.liquid              # Hero section
 ├── snippets/
 │   ├── cart.liquid              # Cart sidebar with all cart functionality
 │   └── product-card.liquid      # Product card component
 └── templates/
-    ├── gift_card.liquid
     └── index.json
 ```
 
