@@ -1,0 +1,150 @@
+<style>
+  .product-grid {
+    margin-top:3rem;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:2rem;
+  }
+
+  .product-card {
+    text-align: center;
+  }
+
+  .product-card__image {
+    width: 100%;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+  }
+
+  .product-card__image img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    transform: scale(1);
+    transition: transform 0.5s ease;
+  }
+
+  .product-card__image img:hover {
+    transform: scale(1.25);
+    transition: transform 0.5s ease;
+  }
+
+  .product-card__price {
+    font-weight:bold;
+    margin: 0.5rem 0;
+  }
+
+  .product-card__header {
+    margin: 1rem 0 0 0;
+    text-transform: uppercase;
+  }
+
+  .product-card__subtitle {
+    margin: 0 0 0.5rem 0;
+    color: var(--grey);
+    font-size: 0.9rem;
+  }
+
+  .product-card__info {
+    font-size: 0.75rem;
+  }
+
+  .product-tags {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    list-style: none;
+    gap: 1rem;
+    bottom: 1rem;
+    left: 0;
+    padding: 0;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .product-tag {
+    background-color: rgba(255,255,255,0.5);
+    color: black;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    border-radius: 1rem;
+    padding: 0.33rem 0.75rem;
+    font-weight: bold;
+  }
+
+  .select-product {
+    background:var(--green);
+    border-radius: 1rem;
+    padding: 0.75rem 2rem;
+    cursor: pointer;
+    border: none;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .select-product:hover {
+    filter: brightness(0.75);
+  }
+</style>
+
+<div class="product-card">
+
+  <figure class="product-card__image">
+    <img
+      src="{{ product.featured_image | image_url: width: 600 }}"
+      alt="{{ product.title }}"
+    >
+
+    {% if product.tags.size > 0 %}
+      <ul class="product-tags">
+        {% for tag in product.tags %}
+          <li class="product-tag">{{ tag }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </figure>
+
+  <h3 class="product-card__header">
+    {{ product.title }}
+  </h3>
+
+  {% if product.metafields.custom.subtitle %}
+    <p class="product-card__subtitle">
+      {{ product.metafields.custom.subtitle }}
+    </p>
+  {% endif %}
+
+  {% if product.metafields.custom.calories or product.metafields.custom.protein %}
+    <p class="product-card__info">
+      {% if product.metafields.custom.calories %}
+        {{ product.metafields.custom.calories }} kcal
+      {% endif %}
+
+      {% if product.metafields.custom.calories and product.metafields.custom.protein %}
+        |
+      {% endif %}
+
+      {% if product.metafields.custom.protein %}
+        {{ product.metafields.custom.protein }} g protein
+      {% endif %}
+    </p>
+  {% endif %}
+
+  <p class="product-card__price">
+    {{ product.price | money }}
+  </p>
+
+  <button
+    class="select-product"
+    data-variant-id="{{ product.first_available_variant.id }}"
+  >
+    Select
+  </button>
+
+</div>
