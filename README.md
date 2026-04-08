@@ -26,6 +26,8 @@ shopify theme dev --store=your-store-name
 ## Preview Link
 https://fuelhub-test-2.myshopify.com/
 
+Password: aostah
+
 ## Files Overview
 
 ### Core Files
