@@ -255,6 +255,9 @@ function updateCart() {
         <div class="cart-item-info">
         <div class="cart-item-title">${item.title}</div>
         </div>
+        <div class="cart-item-price">
+        ${currencyFormatter.format(itemTotal)}
+        </div>
         <div class="cart-item-quantity">
         <input type="number" class="quantity-input" data-variant-id="${variantId}" value="${item.quantity}" min="0" max="10">
         <button class="remove-item" data-variant-id="${variantId}">×</button>
