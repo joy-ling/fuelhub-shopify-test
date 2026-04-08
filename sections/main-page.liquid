@@ -26,6 +26,7 @@
     display: grid;
     gap: 2rem;
     grid-template-columns: 1fr;
+    width: 100%;
   }
 
   /* Tablet */
@@ -57,19 +58,19 @@
                 {{ section.settings.subheading }}
             </p>
         {% endif %}
-
-        {% assign collection = collections[section.settings.product_collection] %}
-
-        {% if collection.products.size > 0 %}
-        <div class="product-grid">
-
-          {% for product in collection.products %}
-            {% render 'product-card', product: product %}
-          {% endfor %}
-
-        </div>
-        {% endif %}
       </div>
+
+      {% assign collection = collections[section.settings.product_collection] %}
+
+      {% if collection.products.size > 0 %}
+      <div class="product-grid">
+
+        {% for product in collection.products %}
+          {% render 'product-card', product: product %}
+        {% endfor %}
+
+      </div>
+      {% endif %}
     </div>
   </div>
 </section>

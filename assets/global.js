@@ -281,7 +281,7 @@ function updateCart() {
     const total = subtotal - discount + shipping;
 
     cartShipping.textContent = `Shipping: ${currencyFormatter.format(shipping)}`;
-    cartSavings.textContent = `Savings: -${currencyFormatter.format(discount)}`;
+    cartSavings.textContent = discount > 0 ? `Savings: -${currencyFormatter.format(discount)}` : '';
     cartTotal.textContent = `Total: ${currencyFormatter.format(total)}`;
     cartCheckout.disabled = totalMeals < 5 || totalMeals > 10;
 
@@ -388,7 +388,7 @@ function showDiscountMessage() {
 
 // Update bottom quantity message
 function updateBottomQuantityMessage() {
-    bottomQuantityMessage.innerHTML = `<p>You have selected ${totalMeals} meals</p><p class='click-to-view-cart' id='click-to-view-cart'>Click to view cart</p>`;
+    bottomQuantityMessage.innerHTML = `<p>You have selected ${totalMeals} meals</p><p class='click-to-view-cart' id='click-to-view-cart'>View cart</p>`;
 }
 
 // Close discount message

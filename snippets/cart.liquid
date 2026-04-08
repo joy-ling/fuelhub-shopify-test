@@ -180,7 +180,7 @@
     font-weight: bold;
     text-transform: uppercase;
     z-index: 10;
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
 
   .cart-toggle:hover {
@@ -260,7 +260,8 @@
   .bottom-quantity-message {
     position: fixed;
     bottom: 2rem;
-    left: 42%;
+    left: 50%;
+    transform: translateX(-50%);
     background: var(--green);
     color: black;
     padding: 1rem 2rem;
@@ -280,6 +281,13 @@
 
   .click-to-view-cart:hover {
     text-decoration: none;
+  }
+
+  /* Desktop */
+  @media (min-width: 1024px) {
+    .cart-toggle {
+      font-size: 1.5rem;
+    }
   }
 </style>
 
