@@ -6,8 +6,11 @@ A custom Shopify theme for FuelHub, a meal delivery service with dynamic cart ma
 
 I began by setting up the products in Shopify using the information and imagery from the existing fuelhub.co.uk website.
 Next, I created a minimal Shopify theme and used index.json to define the homepage template, allowing page components to be configured directly through Shopify’s CMS.
+
 The interface is built using a component-based structure. Reusable UI elements are separated into sections and snippets, with each component containing its own schema, HTML structure, and styles.
+
 Shared styles are centralized in theme.css, while global JavaScript functionality is managed in global.js.
+
 I regularly tested the layout across mobile, tablet, and desktop screen sizes. After each change, I verified the user flow to ensure everything functioned as expected.
 
 ## Setup
