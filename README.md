@@ -2,6 +2,14 @@
 
 A custom Shopify theme for FuelHub, a meal delivery service with dynamic cart management, tiered discounting, and intelligent meal quantity tracking.
 
+### My Approach
+
+I began by setting up the products in Shopify using the information and imagery from the existing fuelhub.co.uk website.
+Next, I created a minimal Shopify theme and used index.json to define the homepage template, allowing page components to be configured directly through Shopify’s CMS.
+The interface is built using a component-based structure. Reusable UI elements are separated into sections and snippets, with each component containing its own schema, HTML structure, and styles.
+Shared styles are centralized in theme.css, while global JavaScript functionality is managed in global.js.
+I regularly tested the layout across mobile, tablet, and desktop screen sizes. After each change, I verified the user flow to ensure everything functioned as expected.
+
 ## Setup
 
 ### Running the Theme Locally
@@ -100,6 +108,8 @@ fuelhub-shopify-test/
 
 ### 1. Default Shipping Price
 
+**Note:** In Shopify, shipping rates are calculated at checkout after the user enters their address. These rates are dynamic and vary depending on factors such as the customer’s location, the product weight, and the order total. For the purposes of this test, I displayed a “default” shipping price on the front end.
+
 Set your store's default shipping price via metafield:
 
 1. Go to **Shopify Admin** → **Content** → **Metafields**
@@ -129,6 +139,8 @@ Create three discount codes in Shopify Admin for auto-application:
 - Applies to: All shipping zones
 
 These codes are automatically applied based on meal count.
+
+**Note:** I actually think that creating an "auto-applied" discount with minimum product quantities in the Shopify backend is a better solution for this, but because I needed to show my work, I opted to go with this solution instead. I just need to show that the discounts are applied not just in the cart's front-end, but in the checkout as well!
 
 ### 3. Product Collection
 
