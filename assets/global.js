@@ -1,4 +1,4 @@
-
+// Update "Add to Cart" button text based on quantity input
 document.querySelectorAll('.product-card').forEach(card => {
 
 const input = card.querySelector('.quantity-input-card');

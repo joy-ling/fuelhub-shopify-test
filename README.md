@@ -24,9 +24,10 @@ https://fuelhub-test-2.myshopify.com/
 | [snippets/cart.liquid](snippets/cart.liquid) | Complete cart functionality, discounts, and messaging |
 | [snippets/product-card.liquid](snippets/product-card.liquid) | Product card component with quantity input |
 | [sections/header.liquid](sections/header.liquid) | Header section |
-| [sections/hero.liquid](sections/hero.liquid) | Hero banner with gradient |
+| [sections/hero.liquid](sections/hero.liquid) | Hero banner |
 | [sections/main-page.liquid](sections/main-page.liquid) | Main product listing page |
 | [assets/theme.css](assets/theme.css) | Global styles and typography |
+| [assets/global.js](assets/global.js) | Global scripts |
 | [layout/theme.liquid](layout/theme.liquid) | Master layout template |
 
 
@@ -78,9 +79,10 @@ https://fuelhub-test-2.myshopify.com/
 ```
 fuelhub-shopify-test/
 ├── assets/
+│   ├── global.js                # Global scripts
 │   └── theme.css                # Global stylesheet with Roboto font
 ├── config/
-│   └── settings_schema.json      # Theme settings configuration
+│   └── settings_schema.json     # Theme settings configuration
 ├── layout/
 │   └── theme.liquid             # Main layout template
 ├── sections/
@@ -122,7 +124,7 @@ Create three discount codes in Shopify Admin for auto-application:
 - Discount: 15%
 - Applies to: All products
 
-**Code 3: MEALS_15OFF_FREESHIPPING** (Free shipping  15% Discount)
+**Code 3: MEALS_15OFF_FREESHIPPING** (Free shipping + 15% Discount)
 - Type: Free shipping + 15% Discount
 - Applies to: All shipping zones
 
@@ -137,7 +139,7 @@ Set up a product collection in the main page section:
 
 ### Fonts
 
-Uses **Roboto** (400 & 700 weights) from Google Fonts. Change in [layout/theme.liquid](layout/theme.liquid).
+Uses **Roboto** from Google Fonts. Change in [layout/theme.liquid](layout/theme.liquid).
 
 ## Key JavaScript Functions
 
@@ -169,8 +171,3 @@ Uses **Roboto** (400 & 700 weights) from Google Fonts. Change in [layout/theme.l
 - `POST /cart/add.js` - Add items to cart
 - `POST /cart/update.js` - Update quantities and apply discounts
 - `POST /cart/clear.js` - Clear entire cart
-
-## Features I would have finished if I had more time
-
-- Change the default quantity input to use plus and minus buttons on each side
-- 
