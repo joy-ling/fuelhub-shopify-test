@@ -2,7 +2,7 @@
 
 A custom Shopify theme for FuelHub, a meal delivery service with dynamic cart management, tiered discounting, and intelligent meal quantity tracking.
 
-### My Approach
+## My Approach
 
 I began by setting up the products in Shopify using the information and imagery from the existing fuelhub.co.uk website.
 Next, I created a minimal Shopify theme and used index.json to define the homepage template, allowing page components to be configured directly through Shopify’s CMS.
